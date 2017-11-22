@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
+import actions from './actions'
 import { CHANGE_MSG } from './mutation_types'
 
 Vue.use(Vuex)
@@ -16,5 +17,5 @@ const mutations = {
 }
 
 export default new Vuex.Store({
-  state, mutations, getters
+  state, mutations, getters, actions
 })
