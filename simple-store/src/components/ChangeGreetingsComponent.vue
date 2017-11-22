@@ -1,5 +1,5 @@
 <template>
-  <input :value='msg' @keyup='changeMessage($event.target.value)'/>
+  <input :value='msg' @keyup='changeMessage($event.target.value)' @keyup.enter="incrementCounter"/>
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
@@ -8,6 +8,6 @@
     computed: mapGetters({
       msg: 'getMessage'
     }),
-    methods: mapActions(['changeMessage'])
+    methods: mapActions(['changeMessage', 'incrementCounter'])
   }
 </script>
