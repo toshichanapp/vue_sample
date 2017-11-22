@@ -1,12 +1,9 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>{{ getMessage }}</h1>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   export default {
-    computed: {
-      msg() {
-        return this.$store.getters.getMessage
-      }
-    }
+    computed: mapGetters(['getMessage'])
   }
 </script>
