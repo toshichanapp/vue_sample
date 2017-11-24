@@ -16,7 +16,7 @@ const state = {
     {
       id: 'clothes',
       title: 'Clothes',
-      items: [{ text: 'black dress', checked: false }, { text: 'all stars', checked: false }]
+      items: [{ text: 'black dress', checked: false }, { text: 'all-stars', checked: false }]
     }
   ]
 }

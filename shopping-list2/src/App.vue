@@ -7,7 +7,7 @@
     </ul>
     <div class="tab-content">
       <div :class= "index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" class="tab-pane" role="tabpanel" :id="list.id">
-        <shopping-list-component :id="list.id" :title="list.title" :items="list.items" v-on:changeTitle="onChangeTitle"></shopping-list-component>
+        <shopping-list-component :id="list.id" :title="list.title" :items="list.items"></shopping-list-component>
       </div>
     </div>
   </div>
@@ -16,12 +16,10 @@
 <script>
   import ShoppingListComponent from './components/ShoppingListComponent'
   import ShoppingListTitleComponent from './components/ShoppingListTitleComponent'
-  import _ from 'underscore'
   import store from './vuex/store'
   import { mapGetters } from 'vuex'
 
   export default {
-    store,
     components: {
       ShoppingListComponent,
       ShoppingListTitleComponent
@@ -29,11 +27,7 @@
     computed: mapGetters({
       shoppinglists: 'getLists'
     }),
-    methods: {
-      onChangeTitle (id, text) {
-        _.findWhere(this.shoppinglists, { id: id }).title = text
-      }
-    }
+    store
   }
 </script>
 
