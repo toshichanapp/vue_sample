@@ -12,18 +12,18 @@
 </template>
 
 <script>
-import store from './vuex/store'
-import { mapGetters } from 'vuex'
-import ItemCheckbox from './components/ItemCheckbox'
-import OutputTable from './components/OutputTable'
+  import store from './vuex/store'
+  import { mapGetters } from 'vuex'
+  import ItemCheckbox from './components/ItemCheckbox'
+  import OutputTable from './components/OutputTable'
 
-export default {
-  store,
-  components: {
-    ItemCheckbox,
-    OutputTable
+  export default {
+    store,
+    components: {
+      ItemCheckbox,
+      OutputTable
+    }
   }
-}
 </script>
 
 <style>
