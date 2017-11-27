@@ -11,17 +11,20 @@
           template(v-for="item in items" v-if="item.id == checkedItem")
             td {{ item.name }}
             td {{ item.size }}
-            td.text-danger(style="cursor:pointer")
+            td.text-danger(style="cursor:pointer" @click="removeItem({ index: index })")
               i.fa.fa-fw.fa-times(aria-hidden="true")
               | 削除
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     computed: mapGetters({
       columns: 'getColumns',
       checkedItems: 'getCheckedItems',
       items: 'getItems'
+    }),
+    methods: mapActions({
+      removeItem: 'removeItem'
     })
   }
 </script>
