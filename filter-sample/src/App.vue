@@ -9,6 +9,7 @@
           | 組織追加
       item-checkbox
       output-table
+    input-image
 </template>
 
 <script>
@@ -16,12 +17,13 @@
   import { mapGetters } from 'vuex'
   import ItemCheckbox from './components/ItemCheckbox'
   import OutputTable from './components/OutputTable'
-
+  import InputImage from './components/DDInputImage'
   export default {
     store,
     components: {
       ItemCheckbox,
-      OutputTable
+      OutputTable,
+      InputImage
     }
   }
 </script>
