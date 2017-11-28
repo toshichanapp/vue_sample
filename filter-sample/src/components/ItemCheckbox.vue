@@ -21,7 +21,7 @@
               button.btn.btn-primary.btn-block(data-dismiss="modal", @click="emitChangeSelects({ value: localCheck })") 追加
 </template>
 <script>
-  import { mapState, mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default{
     data() {
       return {
@@ -30,7 +30,10 @@
       }
     },
     computed: {
-      ...mapState(['items','currentChecked']),
+      ...mapGetters({
+        currentChecked: 'getCurrentChecked',
+        items: 'getItems'
+      }),
       filteredItems: function() {
         return this.items.filter(function(item) {
           return item.name.indexOf(this.query) > -1
@@ -39,8 +42,7 @@
     },
     methods: {
       ...mapActions({
-        emitChangeSelects: 'emitChangeSelects',
-        cancelChangeSelects: 'cancelChangeSelects'
+        emitChangeSelects: 'emitChangeSelects'
       }),
       rollBack(){
         this.localCheck = Object.assign([], this.currentChecked);
