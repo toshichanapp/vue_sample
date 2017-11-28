@@ -44,7 +44,7 @@
       }),
       rollBack(){
         this.localCheck = Object.assign([], this.currentChecked)
-        cancelChangeSelects({ value: currentChecked })
+        cancelChangeSelects({ value: this.currentChecked })
       }
     }
   }

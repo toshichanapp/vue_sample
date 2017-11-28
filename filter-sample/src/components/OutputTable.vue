@@ -1,5 +1,5 @@
 <template lang="pug">
-  #org-table.table-responsive.mb-0(v-if="checkedItems.length > 0")
+  #org-table.table-responsive.mb-0(v-if="currentCheckedItems.length > 0")
     table.table.table-bordered.table-striped.small.mb-0
       thead
         tr
@@ -7,7 +7,7 @@
             | {{name}}
           th.col-delete(scope="col")
       tbody
-        tr(v-for="(checkedItem,index) in checkedItems")
+        tr(v-for="(checkedItem,index) in currentCheckedItems")
           template(v-for="item in items" v-if="item.id == checkedItem")
             td {{ item.name }}
             td {{ item.size }}
@@ -20,7 +20,7 @@
   export default {
     computed: mapGetters({
       columns: 'getColumns',
-      checkedItems: 'getCheckedItems',
+      currentCheckedItems: 'getCurrentChecked',
       items: 'getItems'
     }),
     methods: mapActions({
