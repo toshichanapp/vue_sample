@@ -27,7 +27,7 @@
                   button.btn.btn-secondary.btn-block(data-dismiss="modal", @click="rollBack()") キャンセル
                 .col-6.col-sm-4.mr-auto
                   button.btn.btn-primary.btn-block(data-dismiss="modal", @click="emitChangeSelects({ value: localCheck })") 追加
-      #org-table.table-responsive.mb-0(v-if="currentCheckedItems.length > 0")
+      #org-table.table-responsive.mb-0(v-if="currentChecked.length > 0")
         table.table.table-bordered.table-striped.small.mb-0
           thead
             tr
@@ -35,11 +35,11 @@
                 | {{name}}
               th.col-delete(scope="col")
           tbody
-            tr(v-for="(checkedItem,index) in currentCheckedItems")
+            tr(v-for="(checkedItem,index) in currentChecked")
               template(v-for="item in items" v-if="item.id == checkedItem")
                 td {{ item.name }}
                 td {{ item.size }}
-                td.text-danger(style="cursor:pointer" @click="removeItem({ index: index })")
+                td.text-danger(style="cursor:pointer" @click="removeCheck(index) + removeItem({value: index}) ")
                   i.fa.fa-fw.fa-times(aria-hidden="true")
                   | 削除
 </template>
@@ -53,7 +53,7 @@
       }
     },
     computed: {
-      ...mapState(['items','currentChecked']),
+      ...mapState(['items']),
       filteredItems: function() {
         return this.items.filter(function(item) {
           return item.name.indexOf(this.query) > -1
@@ -61,18 +61,20 @@
       },
       ...mapGetters({
         columns: 'getColumns',
-        currentCheckedItems: 'getCurrentChecked',
+        currentChecked: 'getCurrentChecked',
         items: 'getItems'
       })
     },
     methods: {
       ...mapActions({
         emitChangeSelects: 'emitChangeSelects',
-        cancelChangeSelects: 'cancelChangeSelects',
         removeItem: 'removeItem'
       }),
       rollBack(){
         this.localCheck = Object.assign([], this.currentChecked)
+      },
+      removeCheck(index){
+        this.localCheck.splice(index, 1);
       }
     }
   }
