@@ -44,7 +44,7 @@
                   | 削除
 </template>
 <script>
-  import { mapState, mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     data() {
       return {
@@ -53,17 +53,16 @@
       }
     },
     computed: {
-      ...mapState(['items']),
-      filteredItems: function() {
-        return this.items.filter(function(item) {
-          return item.name.indexOf(this.query) > -1
-        }, this)
-      },
       ...mapGetters({
         columns: 'getColumns',
         currentChecked: 'getCurrentChecked',
         items: 'getItems'
-      })
+      }),
+      filteredItems: function() {
+        return this.items.filter(function(item) {
+          return item.name.indexOf(this.query) > -1
+        }, this)
+      }
     },
     methods: {
       ...mapActions({
