@@ -6,8 +6,5 @@ export default {
   },
   [types.REMOVE_ITEM] (state, data) {
     state.currentChecked.splice(data.index, 1);
-  },
-  [types.CANCEL_CHANGE_SELECTS] (state, data) {
-    state.currentChecked = Object.assign([], data.value);
   }
 }

@@ -16,7 +16,7 @@
           hr
           .form-row
             .col-6.col-sm-4.ml-auto
-              button.btn.btn-secondary.btn-block(data-dismiss="modal", @click="rollBack()") キャンセル
+              button.btn.btn-secondary.btn-block(data-dismiss="modal", @click="rollBack") キャンセル
             .col-6.col-sm-4.mr-auto
               button.btn.btn-primary.btn-block(data-dismiss="modal", @click="emitChangeSelects({ value: localCheck })") 追加
 </template>
@@ -43,8 +43,7 @@
         cancelChangeSelects: 'cancelChangeSelects'
       }),
       rollBack(){
-        this.localCheck = Object.assign([], this.currentChecked)
-        cancelChangeSelects({ value: this.currentChecked })
+        this.localCheck = Object.assign([], this.currentChecked);
       }
     }
   }
