@@ -1,10 +1,10 @@
 <template lang="pug">
   #wrapper
-    div(v-if='!image')
+    div(v-show='!image')
       .dropzone-area(drag-over='handleDragOver' @dragenter='hovering = true' @dragleave='hovering = false' :class="{'hovered': hovering}")
         .dropzone-text
           span.dropzone-title Drop image here or click to select
-        input(type='file' @change='onFileChange')
+        input(type='file' @change='onFileChange' id="inputImage")
     .dropzone-preview
       img(:src='image')
       button(@click='removeImage' v-if='image') Remove
@@ -35,6 +35,7 @@
       },
       removeImage: function (e) {
           this.image = '';
+          document.getElementById("inputImage").value = null
       }
     }
   }
