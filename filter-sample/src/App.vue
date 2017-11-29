@@ -10,20 +10,32 @@
       item-checkbox
       output-table
     input-image
+    modal
+    button(@click='showModalTypeA') showModalTypeA
+    button(@click='showModalTypeB') showModalTypeB
+    multi-modal-view
 </template>
 
 <script>
   import store from './vuex/store'
-  import { mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
   import ItemCheckbox from './components/ItemCheckbox'
   import OutputTable from './components/OutputTable'
   import InputImage from './components/DDInputImage'
+  import Modal from './components/Modal'
+  import MultiModalView from './components/MultiModalView.vue'
+
   export default {
     store,
     components: {
       ItemCheckbox,
       OutputTable,
-      InputImage
+      InputImage,
+      Modal,
+      MultiModalView
+    },
+    methods: {
+      ...mapActions('multiModal', ['showModalTypeA', 'showModalTypeB'])
     }
   }
 </script>
