@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import UserModal from './components/UserModal.vue'
 import store from './vuex/store'
 
 new Vue({
@@ -14,4 +15,9 @@ new Vue({
     store.state.columns = ['名前','メンバ']
   },
   render: h => h(App)
+})
+
+var user = new Vue ({
+  el: '#user',
+  render: h => h(UserModal)
 })
