@@ -14,6 +14,7 @@
     button(@click='showModalTypeA') showModalTypeA
     button(@click='showModalTypeB') showModalTypeB
     multi-modal-view
+    one-modal
 </template>
 
 <script>
@@ -24,6 +25,7 @@
   import InputImage from './components/DDInputImage'
   import Modal from './components/Modal'
   import MultiModalView from './components/MultiModalView.vue'
+  import OneModal from './components/OneModal.vue'
 
   export default {
     store,
@@ -32,7 +34,8 @@
       OutputTable,
       InputImage,
       Modal,
-      MultiModalView
+      MultiModalView,
+      OneModal
     },
     methods: {
       ...mapActions('multiModal', ['showModalTypeA', 'showModalTypeB'])
@@ -40,5 +43,6 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "./assets/style";
 </style>
