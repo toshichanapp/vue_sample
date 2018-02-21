@@ -69,10 +69,14 @@
         this.localCheck.splice(index, 1);
       },
       addUsers: function(org_name, user_ids){
+        if(this.localCheck.length == 0){
+          console.log("yattane")
+          this.localCheck = Object.assign([], user_ids);
+        }
         let value = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
         if(value){
           for(let i =0; i < user_ids.length; i++){
-            if(this.localCheck.indexOf(String(user_ids[i])) == -1){
+            if(this.localCheck.indexOf(user_ids[i]) == -1){
               this.localCheck.push(user_ids[i]);
             }
           }
