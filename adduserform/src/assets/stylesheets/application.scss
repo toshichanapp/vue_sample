@@ -1,0 +1,399 @@
+//- https://qiita.com/RinoTsuka/items/aa1ab94c10542706fdc4
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 200;
+}
+
+// IE hack
+@media all and (-ms-high-contrast: none) {
+  body,
+  tooltip,
+  popover {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+
+$input-btn-padding-y:         .375rem !default;
+
+//- open-color
+@import "open-color/open-color";
+
+$blue:    $oc-blue-6 !default;
+$indigo:  $oc-indigo-6 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     $oc-red-8 !default;
+$orange:  #fd7e14 !default;
+$yellow:  $oc-yellow-5 !default;
+$green:   $oc-green-6 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+//- bootstrap
+@import "bootstrap/bootstrap";
+
+//- font-awesome
+$fa-font-path: "../fonts/font-awesome" !default;
+@import "font-awesome/font-awesome";
+
+
+
+.navbar-brand {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.breadcrumb {
+  padding: 0;
+  background: none;
+  margin-top: 24px;
+  margin-bottom: 3px;
+}
+
+footer {
+  border-top: 1px solid $gray-300;
+}
+
+.badge {
+  vertical-align: 12.5%;
+}
+
+small, .small {
+  font-size: 0.875rem !important;
+  small, .small {
+    font-size: 0.75rem;
+  }
+}
+.x-small {
+  font-size: 0.75rem;
+}
+
+.col-form-label {
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.badge-light {
+  background-color: $gray-200;
+  color: $gray-800;
+}
+
+.input-group-btn > .btn.btn-primary {
+  border-color: theme-color("primary");
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.nav-horizontal {
+  overflow: hidden;
+  width: 100%;
+  //- .nav-horizontal .nav-horizontal-mask
+  .nav-horizontal-mask {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    //- .nav-horizontal .nav-horizontal-mask .navbar-nav
+    .navbar-nav {
+      padding-right: 1rem;
+    }
+    //- .nav-horizontal .nav-horizontal-mask:after
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width:1rem;
+      right:0;
+      height:56px;
+      background: linear-gradient(to right,  rgba(135,142,149,0) 0%,rgba(135,142,149,1) 100%);
+    }
+  }
+}
+
+.droparea {
+  border: 1px dashed $gray-500;
+}
+
+.col-delete {
+  width: 3rem + 1.75rem; //24=space
+}
+
+.accordion {
+  .card-header:first-child {
+    border-bottom: none;
+  }
+  .collapse + .card-header {
+    border-top: 1px solid $gray-300;
+    border-bottom: none;
+  }
+}
+
+
+$list-tree-padding: 0.75em; // 行の高さを基準に余白と位置を揃える
+$list-tree-border-width: 1px;
+$list-tree-border-color: currentColor;
+ 
+.list-tree {
+    line-height: $list-tree-padding;
+}
+ 
+.list-tree,
+.list-tree ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+ 
+.list-tree ul {
+    position: relative;
+    margin-top: ($list-tree-padding / 2);
+    margin-left: $list-tree-padding;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        border-left: $list-tree-border-width solid $list-tree-border-color;
+    }
+}
+ 
+.list-tree ul li {
+    position: relative;
+    margin: 0;
+    padding: ($list-tree-padding / 2) $list-tree-padding;
+}
+ 
+.list-tree ul li:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: $list-tree-padding;
+    left: 0;
+    width: ($list-tree-padding / 2);
+    height: 0;
+    border-top: $list-tree-border-width solid $list-tree-border-color;
+}
+
+.list-tree ul li:last-child:before {
+    top: $list-tree-padding;
+    bottom: 0;
+    height: auto;
+    background-color: $dark; // [1]
+}
+
+.input-group-append {
+  .btn.btn-outline-secondary {
+    border-color: $oc-gray-4;
+    border-radius: $border-radius;
+    border-right: none;
+    &:hover,&:focus {
+      border-color:$secondary;
+    }
+  }
+}
+
+.modal-body {
+  display: block!important;
+  max-height: calc(100vh - 7rem - 1px);
+  overflow-y: auto;
+}
+
+.badge-group {
+  .badge {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: -0.25rem;
+  }
+  .badge:last-child {
+    border-radius: $border-radius;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+
+//- shuhari
+
+body.shu-editor {
+  .navbar-dark {
+    background: $oc-gray-8 !important;
+    .navbar-text {
+      color: #fff;
+    }
+  }
+  .navbar-dark.border-bottom {
+    border-color: $oc-gray-9 !important;
+  }
+  .navbar-dark.bg-dark {
+    background: $oc-gray-9 !important;
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: calc(7rem + 1px);
+  }
+}
+
+.shu-header-editor {
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+}
+
+.shu-sidebar {
+  position: sticky;
+  top: calc(7rem + 1px);
+  z-index: 1000;
+  height: calc(100vh - 7rem - 1px);
+  background-color: $oc-gray-8;
+  color: #fff;
+  a {
+    color: #fff;
+  }
+  .border-bottom {
+    border-color: $oc-gray-9 !important;
+  }
+}
+.shu-sidebar-left {
+  border-right: 1px solid $oc-gray-9;
+}
+.shu-sidebar-right {
+  border-left: 1px solid $oc-gray-9;
+}
+
+.draggable {
+  cursor: grab;
+  &:focus {
+    cursor: grabbing;
+  }
+  &:hover {
+    text-decoration: none;
+    background-color: $oc-gray-9;
+  }
+}
+
+.shu-sidebar-search {
+  position: relative;
+  padding: 1rem 15px;
+  margin-right: -15px;
+  margin-left: -15px;
+  border-bottom: 1px solid $oc-gray-9;
+  .form-control {
+    color: #fff;
+    background-color: $oc-gray-9;
+    border-color: $oc-gray-9;
+  }
+}
+
+.shu-sidebar-title {
+  border-bottom: 1px solid $oc-gray-9;
+  padding: 0.25rem 1rem;
+}
+
+.shu-sidebar-contents {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: -15px;
+  margin-left: -15px;
+  .card {
+    max-width: 160px;
+    margin:0 auto;
+    background-color: $oc-gray-9;
+    border-color: $oc-gray-9;
+    color: #fff;
+    &.active {
+      background-color: $link-color;
+      border-color: $link-color;
+    }
+  }
+}
+
+.shu-sidebar-contents {
+  display: block!important;
+  max-height: calc(100vh - 7rem - 1px);
+  overflow-y: auto;
+}
+.shu-sidebar-search + .shu-sidebar-contents {
+  max-height: calc(100vh - 7rem - 1px - 71px);
+}
+
+.shu-main-tab {
+  background-color: $oc-gray-8;
+  display: block !important;
+  .nav.nav-pills {
+    a {
+      color: $white;
+    }
+    .active {
+      background-color: $oc-gray-9;
+    }
+  }
+  
+}
+
+.shu-main-iframe {
+  display: block !important;
+  border: none;
+  padding: 0!important;
+  margin: 0!important;
+  width: 100%;
+  height: calc(100vh - 7rem - 1px);
+}
+
+.shu-main-tab + .shu-main-iframe {
+  height: calc(100vh - 7rem - 1px - 56px);
+}
+
+.shu-sidebar-textarea {
+  display: block !important;
+  background-color: $oc-gray-9;
+  border: none;
+  color: $white;
+  width: 100%;
+  height: calc(100vh - 7rem - 1px);
+  &:focus {
+    outline: none;
+  }
+}
+
+.shu-main-tab + .shu-sidebar-textarea {
+  height: calc(100vh - 7rem - 1px - 56px);
+}
+
