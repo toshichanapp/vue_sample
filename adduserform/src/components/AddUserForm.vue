@@ -76,7 +76,7 @@
         let value = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
         if(value){
           for(let i =0; i < user_ids.length; i++){
-            if(this.localCheck.indexOf(user_ids[i]) == -1){
+            if(!this.localCheck.includes(user_ids[i])){
               this.localCheck.push(user_ids[i]);
             }
           }
@@ -118,11 +118,11 @@
         let o_user_ids = org_users.map(function(user){return user.id});
         let count = 0;
         for(let i = 0; i < o_user_ids.length; i++){
-          if (localCheck.indexOf(o_user_ids[i]) == -1){
+          if(localCheck.includes(o_user_ids[i])){
             count += 1
           }
         }
-        if(count == 0){
+        if(count != 0){
           no_org.push(org_id);
         }
       });
