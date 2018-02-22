@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   currentOrgChecked: [],
-  currentUserChecked: []
+  currentUserChecked: [1, 80, 82, 84, 86]
 }
 
 export default new Vuex.Store({
