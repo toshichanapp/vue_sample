@@ -116,13 +116,14 @@
       org_ids.forEach(function(org_id){
         let org_users = users.filter(function(user){return user.organization_id == org_id});
         let o_user_ids = org_users.map(function(user){return user.id});
-        let count = 0;
+        let has_all_member = true;
         for(let i = 0; i < o_user_ids.length; i++){
-          if(localCheck.includes(o_user_ids[i])){
-            count += 1
+          if(!localCheck.includes(o_user_ids[i])){
+            has_all_member = false;
+            break;
           }
         }
-        if(count != 0){
+        if(has_all_member){
           no_org.push(org_id);
         }
       });
