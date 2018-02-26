@@ -70,11 +70,10 @@
       },
       addUsers: function(org_name, user_ids){
         if(this.localCheck.length == 0){
-          console.log("yattane")
           this.localCheck = Object.assign([], user_ids);
         }
-        let value = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
-        if(value){
+        const isChecked = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
+        if(isChecked){
           for(let i =0; i < user_ids.length; i++){
             if(!this.localCheck.includes(user_ids[i])){
               this.localCheck.push(user_ids[i]);
@@ -89,8 +88,8 @@
         }
       },
       switchCheck: function(org_id, org_name){
-        let userChecks = document.querySelectorAll(`[data-belong=${org_name}]`);
-        let userChecked = document.querySelectorAll(`[data-belong=${org_name}]:checked`);
+        const userChecks = document.querySelectorAll(`[data-belong=${org_name}]`);
+        const userChecked = document.querySelectorAll(`[data-belong=${org_name}]:checked`);
         if(userChecks.length == userChecked.length){
           this.orgCheck.push(org_id);
         }else{
@@ -107,13 +106,13 @@
       this.users = [{"id":1,"authority_name":"管理者","name":"admin_synapz","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":32,"authority_name":"一般","name":"古賀こころ","role_name":"designer","organization_id":53,"organization_name":"宇宙忍者"},{"id":33,"authority_name":"一般","name":"前田 はるか","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":34,"authority_name":"一般","name":"荒井 陽輝","role_name":"engineer","organization_id":52,"organization_name":"秘密結社"},{"id":35,"authority_name":"一般","name":"池田 尚太","role_name":"director","organization_id":null,"organization_name":""},{"id":36,"authority_name":"一般","name":"吉田 祐子","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":38,"authority_name":"一般","name":"宮里 優人","role_name":"designer","organization_id":null,"organization_name":""},{"id":39,"authority_name":"一般","name":"安藤 実咲","role_name":"designer","organization_id":53,"organization_name":"宇宙忍者"},{"id":40,"authority_name":"一般","name":"古賀 千晶","role_name":"director","organization_id":52,"organization_name":"秘密結社"},{"id":41,"authority_name":"一般","name":"古閑 愛菜","role_name":"director","organization_id":53,"organization_name":"宇宙忍者"},{"id":77,"authority_name":"一般","name":"test","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":78,"authority_name":"一般","name":"斎藤 駿","role_name":"designer","organization_id":null,"organization_name":""},{"id":79,"authority_name":"一般","name":"近藤 秀樹","role_name":"designer","organization_id":null,"organization_name":""},{"id":80,"authority_name":"一般","name":"西森 海斗","role_name":"reviewer","organization_id":1,"organization_name":"synapz"},{"id":81,"authority_name":"一般","name":"中村 愛菜","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":82,"authority_name":"一般","name":"伊藤 翼","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":83,"authority_name":"一般","name":"玉城 朱里","role_name":"engineer","organization_id":null,"organization_name":""},{"id":84,"authority_name":"一般","name":"相田 和希","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":85,"authority_name":"一般","name":"中村 天音","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":86,"authority_name":"一般","name":"高嶺 彩夏","role_name":"engineer","organization_id":1,"organization_name":"synapz"},{"id":87,"authority_name":"一般","name":"橋本 一樹","role_name":"director","organization_id":null,"organization_name":""},{"id":88,"authority_name":"管理者","name":"fdsa","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":89,"authority_name":"一般","name":"toshi","role_name":"reviewer","organization_id":52,"organization_name":"秘密結社"}]
       this.columns = Object.assign([], userColumns)
       this.localCheck = this.$store.state.currentUserChecked
-      let users = this.users
-      let localCheck = this.localCheck
-      let org_ids = this.orgs.map(function(org){return org.id});
+      const users = this.users
+      const localCheck = this.localCheck
+      const org_ids = this.orgs.map(function(org){return org.id});
       let no_org = [];
       org_ids.forEach(function(org_id){
-        let org_users = users.filter(function(user){return user.organization_id == org_id});
-        let o_user_ids = org_users.map(function(user){return user.id});
+        const org_users = users.filter(function(user){return user.organization_id == org_id});
+        const o_user_ids = org_users.map(function(user){return user.id});
         let has_all_member = true;
         for(let i = 0; i < o_user_ids.length; i++){
           if(!localCheck.includes(o_user_ids[i])){
