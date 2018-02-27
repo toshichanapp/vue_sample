@@ -62,7 +62,7 @@
         removeItem: 'removeUserItem'
       }),
       rollBack(){
-        this.localCheck = Object.assign([], this.currentChecked)
+        this.localCheck = Object.assign([], this.currentChecked);
       },
       removeCheck(index){
         this.localCheck.splice(index, 1);
@@ -91,7 +91,7 @@
         if(userChecks.length == userChecked.length){
           this.orgCheck.push(org_id);
         }else{
-          const index = this.orgCheck.indexOf(org_id)
+          const index = this.orgCheck.indexOf(org_id);
           if(index != -1){
             this.orgCheck.splice(index, 1);
           }
@@ -99,13 +99,13 @@
       }
     },
     created() {
-      var userColumns = ['メンバ','権限','組織','ロ-ル']
+      const userColumns = ['メンバ','権限','組織','ロ-ル'];
       this.orgs = [{"id":52,"name":"秘密結社","users":[{"id":34,"name":"荒井 陽輝","admin_flag":false},{"id":40,"name":"古賀 千晶","admin_flag":false},{"id":89,"name":"toshi","admin_flag":false}],"user_ids":[34,40,89],"size":3},{"id":53,"name":"宇宙忍者","users":[{"id":32,"name":"古賀こころ","admin_flag":false},{"id":39,"name":"安藤 実咲","admin_flag":false},{"id":41,"name":"古閑 愛菜","admin_flag":false}],"user_ids":[32,39,41],"size":3},{"id":64,"name":"NTT西","users":[{"id":33,"name":"前田 はるか","admin_flag":false},{"id":36,"name":"吉田 祐子","admin_flag":false},{"id":77,"name":"test","admin_flag":false},{"id":81,"name":"中村 愛菜","admin_flag":false},{"id":85,"name":"中村 天音","admin_flag":false},{"id":88,"name":"fdsa","admin_flag":true}],"user_ids":[33,36,77,81,85,88],"size":6}]
       this.users = [{"id":1,"authority_name":"管理者","name":"admin_synapz","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":32,"authority_name":"一般","name":"古賀こころ","role_name":"designer","organization_id":53,"organization_name":"宇宙忍者"},{"id":33,"authority_name":"一般","name":"前田 はるか","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":34,"authority_name":"一般","name":"荒井 陽輝","role_name":"engineer","organization_id":52,"organization_name":"秘密結社"},{"id":35,"authority_name":"一般","name":"池田 尚太","role_name":"director","organization_id":null,"organization_name":""},{"id":36,"authority_name":"一般","name":"吉田 祐子","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":38,"authority_name":"一般","name":"宮里 優人","role_name":"designer","organization_id":null,"organization_name":""},{"id":39,"authority_name":"一般","name":"安藤 実咲","role_name":"designer","organization_id":53,"organization_name":"宇宙忍者"},{"id":40,"authority_name":"一般","name":"古賀 千晶","role_name":"director","organization_id":52,"organization_name":"秘密結社"},{"id":41,"authority_name":"一般","name":"古閑 愛菜","role_name":"director","organization_id":53,"organization_name":"宇宙忍者"},{"id":77,"authority_name":"一般","name":"test","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":78,"authority_name":"一般","name":"斎藤 駿","role_name":"designer","organization_id":null,"organization_name":""},{"id":79,"authority_name":"一般","name":"近藤 秀樹","role_name":"designer","organization_id":null,"organization_name":""},{"id":80,"authority_name":"一般","name":"西森 海斗","role_name":"reviewer","organization_id":1,"organization_name":"synapz"},{"id":81,"authority_name":"一般","name":"中村 愛菜","role_name":"engineer","organization_id":64,"organization_name":"NTT西"},{"id":82,"authority_name":"一般","name":"伊藤 翼","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":83,"authority_name":"一般","name":"玉城 朱里","role_name":"engineer","organization_id":null,"organization_name":""},{"id":84,"authority_name":"一般","name":"相田 和希","role_name":"designer","organization_id":1,"organization_name":"synapz"},{"id":85,"authority_name":"一般","name":"中村 天音","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":86,"authority_name":"一般","name":"高嶺 彩夏","role_name":"engineer","organization_id":1,"organization_name":"synapz"},{"id":87,"authority_name":"一般","name":"橋本 一樹","role_name":"director","organization_id":null,"organization_name":""},{"id":88,"authority_name":"管理者","name":"fdsa","role_name":"reviewer","organization_id":64,"organization_name":"NTT西"},{"id":89,"authority_name":"一般","name":"toshi","role_name":"reviewer","organization_id":52,"organization_name":"秘密結社"}]
-      this.columns = Object.assign([], userColumns)
-      this.localCheck = this.$store.state.currentUserChecked
-      const users = this.users
-      const localCheck = this.localCheck
+      this.columns = Object.assign([], userColumns);
+      this.localCheck = this.$store.state.currentUserChecked;
+      const users = this.users;
+      const localCheck = this.localCheck;
       const org_ids = this.orgs.map(function(org){return org.id});
       let no_org = [];
       org_ids.forEach(function(org_id){
@@ -125,7 +125,7 @@
       this.orgCheck = Object.assign([], no_org);
     },
     mounted() {
-      $(this.$refs.vuemodal).on("hidden.bs.modal", this.rollBack)
+      $(this.$refs.vuemodal).on("hidden.bs.modal", this.rollBack);
     }
   }
 </script>
