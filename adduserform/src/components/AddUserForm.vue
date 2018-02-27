@@ -18,7 +18,7 @@
               .col-6.col-sm-4.ml-auto
                 .btn.btn-secondary.btn-block(data-dismiss="modal", @click="rollBack()") キャンセル
               .col-6.col-sm-4.mr-auto
-                .btn.btn-primary.btn-block(data-dismiss="modal", @click="emitChangeSelects({value: localCheck})") 追加
+                .btn.btn-primary.btn-block(data-dismiss="modal", @click="emitChangeSelects({value: localCheck, org: orgCheck})") 追加
     .table-responsive.mb-0(v-if="currentChecked.length > 0")
       table.table.table-bordered.table-striped.small.mb-0
         thead
@@ -33,7 +33,7 @@
               td {{ user.authority_name }}
               td {{ user.organization_name }}
               td {{ user.role_name }}
-              td.text-danger(style="cursor:pointer" @click="removeCheck(index) + emitChangeSelects({value: localCheck})")
+              td.text-danger(style="cursor:pointer" @click="removeCheck(index) + emitChangeSelects({value: localCheck, org: orgCheck})")
                 i.fa.fa-fw.fa-times(aria-hidden="true")
                 | 削除
 </template>
@@ -53,7 +53,8 @@
     store,
     computed: {
       ...mapGetters({
-        currentChecked: 'getCurrentUserChecked'
+        currentChecked: 'getCurrentUserChecked',
+        currentOrgChecked: 'getCurrentOrgChecked'
       })
     },
     methods: {
@@ -63,9 +64,10 @@
       }),
       rollBack(){
         this.localCheck = Object.assign([], this.currentChecked);
+        this.orgCheck = Object.assign([], this.currentOrgChecked)
       },
       removeCheck(index){
-        this.localCheck.splice(index, 1);
+        document.getElementById(userId).click();
       },
       addUsers: function(org_name, user_ids){
         const isChecked = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
@@ -123,6 +125,7 @@
         }
       });
       this.orgCheck = Object.assign([], no_org);
+      this.$store.state.currentOrgChecked = Object.assign([], no_org);
     },
     mounted() {
       $(this.$refs.vuemodal).on("hidden.bs.modal", this.rollBack);
