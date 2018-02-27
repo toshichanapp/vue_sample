@@ -9,6 +9,12 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
+    loaders:[
+      {
+        test: /\.vue$/,
+        loader: 'vue!eslint'
+      }
+    ],
     rules: [
       {
         test: /\.css$/,
