@@ -68,23 +68,22 @@
         this.localCheck.splice(index, 1);
       },
       addUsers: function(org_name, user_ids){
-        if(this.localCheck.length == 0){
-          this.localCheck = Object.assign([], user_ids);
-        }
         const isChecked = document.querySelectorAll(`[data-org=${org_name}]`)[0].checked;
+        let cpLocalCheck = Object.assign([], this.localCheck);
         if(isChecked){
           for(let i =0; i < user_ids.length; i++){
-            if(!this.localCheck.includes(user_ids[i])){
-              this.localCheck.push(user_ids[i]);
+            if(!cpLocalCheck.includes(user_ids[i])){
+              cpLocalCheck.push(user_ids[i]);
             }
           }
         }
         else{
           for(let i =0; i < user_ids.length; i++){
-            let index = this.localCheck.indexOf(user_ids[i]);
-            this.localCheck.splice(index, 1);
+            let index = cpLocalCheck.indexOf(user_ids[i]);
+            cpLocalCheck.splice(index, 1);
           }
         }
+        this.localCheck = Object.assign([], cpLocalCheck);
       },
       switchCheck: function(org_id, org_name){
         const userChecks = document.querySelectorAll(`[data-belong=${org_name}]`);
