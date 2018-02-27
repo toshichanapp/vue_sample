@@ -1,3 +1,4 @@
 export default {
-  getCurrentUserChecked: state => state.currentUserChecked
-}
+  getCurrentUserChecked: (state) => state.currentUserChecked,
+  getCurrentOrgChecked: (state) => state.getCurrentOrgChecked,
+};
